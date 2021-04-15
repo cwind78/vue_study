@@ -1,0 +1,60 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+	{{message}}
+
+	<p v-bind:title="message">
+		over your mouse in here
+	</p>
+
+	<p v-if="seen">can you see me?</p>
+
+	<div>
+		<div v-for="todo in todos">
+			{{todo.text}}
+		</div>
+	</div>
+
+	<a v-on:click="setSeen">Seen</a>
+
+	<input v-model="extraText" />
+	<p>{{extraText}}</p>
+
+	<todo-item v-for="todo in todos"
+               v-bind:todo="todo"
+               v-bind:key="todo.index"
+	></todo-item>
+</div>
+
+<script>
+	Vue.component("todo-item", {
+		props: ["todo"]
+		, template: "<p>{{todo.text}}</p>"
+	})
+
+	var app = new Vue({
+		el: "#App"
+		, data: {
+			message: "Hello"
+			, seen: false
+			, todos: [
+				{ index: 1, text : "todo first" }
+				, { index: 2, text : "todo second" }
+				, { index: 3, text : "todo third" }
+			  ]
+			, extraText: ""
+		}
+		, methods: {
+			setSeen: function() {
+				this.seen = !this.seen;
+			}
+		}
+		, created: function() {
+			this.extraText = "123";
+		}
+	})
+
+	app.$watch('extraText', function(newVal, oldVal) {
+		console.log("newVal="+newVal+", oldVal="+oldVal);
+	})
+</script>
