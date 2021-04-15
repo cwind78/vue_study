@@ -35,6 +35,8 @@
 
 	<input v-bind:value="message" />
 	<input :[attribute]="message" />
+
+	<span>{{reverseMessage}}</span>
 </div>
 
 <script>
@@ -59,6 +61,11 @@
 			, eve: "click"
 			, attribute: "value"
 		}
+		, computed: {
+			reverseMessage: function() {
+				return this.message.split("").reverse().join("");
+			}
+		}
 		, methods: {
 			setSeen: function() {
 				this.seen = !this.seen;
@@ -75,4 +82,7 @@
 	app.$watch('extraText', function(newVal, oldVal) {
 		console.log("newVal="+newVal+", oldVal="+oldVal);
 	})
+
+	app.message = "안녕하세요 좋은 아침입니다. 아침에 식사는 하셨나요?";
+	console.log(app.reverseMessage);
 </script>
