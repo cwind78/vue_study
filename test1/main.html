@@ -24,6 +24,17 @@
                v-bind:todo="todo"
                v-bind:key="todo.index"
 	></todo-item>
+
+	<span>{{html}}</span>
+	<span v-html="html"></span>
+
+	<button v-bind:disabled="isButtonDisabled">Button</button>
+
+	<button v-on:[eve]="notice">button1</button>
+	<button @[eve]="notice">button2</button>
+
+	<input v-bind:value="message" />
+	<input :[attribute]="message" />
 </div>
 
 <script>
@@ -43,10 +54,17 @@
 				, { index: 3, text : "todo third" }
 			  ]
 			, extraText: ""
+			, html: "<span style='color:red;'>hello</span>"
+			, isButtonDisabled: false
+			, eve: "click"
+			, attribute: "value"
 		}
 		, methods: {
 			setSeen: function() {
 				this.seen = !this.seen;
+			}
+			, notice: function() {
+				alert("You did to "+this.eve);
 			}
 		}
 		, created: function() {
