@@ -1,5 +1,13 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+<style>
+.active {
+	background-color: skyblue;
+}
+.error {
+	background-color: pink;
+}
+</style>
 <div id="app">
 	{{message}}
 
@@ -24,6 +32,20 @@
                v-bind:todo="todo"
                v-bind:key="todo.index"
 	></todo-item>
+
+	<div v-for="(value, name, index) in todos">
+		{{index}} = {{name}} : {{value}}
+	</div>
+
+	<!--div class="active">active</div>
+	<div class="error">error</div-->
+
+	<!--div v-bind:class="{active: active, error: error}">active</div-->
+	<div v-bind:class="active?activeClass:errorClass">프로세스</div>
+	<button @click="changeClass">{{btnName}}</button>
+
+	<div v-if="active">고칠 코드가 없습니다</div>
+	<div v-else>코드를 고치세요</div>
 </div>
 
 <script>
@@ -38,15 +60,27 @@
 			message: "Hello"
 			, seen: false
 			, todos: [
-				{ index: 1, text : "todo first" }
-				, { index: 2, text : "todo second" }
-				, { index: 3, text : "todo third" }
+				{text : "todo first" }
+				, {text : "todo second" }
+				, {text : "todo third" }
 			  ]
 			, extraText: ""
+			, active: true
+			, activeClass: "active"
+			, errorClass: "error"
+			, btnName: "오류발생"
 		}
 		, methods: {
 			setSeen: function() {
 				this.seen = !this.seen;
+			}
+			, changeClass: function() {
+				this.active = !this.active;
+				if (this.active) {
+					this.btnName = "오류발생";
+				} else {
+					this.btnName = "정상화";
+				}
 			}
 		}
 		, created: function() {
