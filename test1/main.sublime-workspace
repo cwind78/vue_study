@@ -1,0 +1,233 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"naver",
+				"naverState"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "install pack",
+		"selected_items":
+		[
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"git cus",
+				"Git: Custom Command"
+			],
+			[
+				"git init",
+				"Git: Init"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/NaverLogin.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/router/index.js",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/store/index.js",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/Menus.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/board/Board.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/user/UserList.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/store/modules/auth.js",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/Loading.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/Login_new.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/Login.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/game/Roulet.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/game/CardOver.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/common/combo/CommonCombo.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/App.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/game/CommonCombo.vue",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/vue20207282126/vue/build/webpack.base.conf.js",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/vue20207282126/vue/constant.js",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/vue20207282126/vue/package.json",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/vue20207282126/vue/config/index.js",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/vue20207282126/vue/build/build.js",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/pjt20191228-1/front/src/components/login.vue",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/pjt20191228-1/front/src/router/index.js",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/pjt20191228-1/front/README.md",
+		"/C/Users/ksk/Documents/workspace-spring-tool-suite-4-4.3.1.RELEASE/pjt20191228-1/front/package.json",
+		"/C/workspace-sts-3.9.2.RELEASE/prj1/fe/config/index.js",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/build/check-versions.js",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/build/build.js",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/main.js",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/components/contact/Search.vue",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/package.json",
+		"/C/Users/ksk/git/vuex/vuex/contactsapp_search/src/store/modules/contact.js",
+		"/C/Users/ksk/Documents/1. document/3. study/5. Vuex/workspace/vuex/contactsapp_search/src/components/ContactList.vue",
+		"/C/Users/ksk/Documents/1. document/3. study/5. Vuex/workspace/vuex/contactsapp_search/src/components/Search.vue",
+		"/C/Users/ksk/Documents/1. document/3. study/5. Vuex/workspace/vuex/contactsapp_search/index.html",
+		"/C/Users/ksk/Documents/1. document/3. study/5. Vuex/workspace/vuex/contactsapp_search/config/index.js",
+		"/C/Users/ksk/Documents/1. document/3. study/5. Vuex/workspace/vuex/contactsapp_search/package.json",
+		"/C/Users/ksk/Documents/1. document/3. study/3. angularjs/1. angular-router/home.html",
+		"/C/Users/ksk/Documents/1. document/3. study/2. ionic/1. project/1. mbe/mbe-front/src/pages/chat/chat.ts",
+		"/C/Users/ksk/Documents/1. document/3. study/2. ionic/1. project/1. mbe/mbe-front/src/app/common.service.ts",
+		"/C/Users/ksk/Documents/1. document/3. study/2. ionic/1. project/1. mbe/mbe-front/src/pages/chat/chat.html",
+		"/C/Users/ksk/Documents/1. document/3. study/2. ionic/1. project/1. mbe/mbe-front/src/app/app.html",
+		"/C/Users/ksk/Documents/1. document/3. study/2. ionic/1. project/1. mbe/mbe-front/src/pages/acceptdetail/acceptdetail.ts",
+		"/C/Users/ksk/Documents/1. document/3. study/2. ionic/1. project/1. mbe/mbe-front/ionic.config.json",
+		"/C/Program Files/Sublime Text 3/changelog.txt"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "main.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 204.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

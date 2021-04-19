@@ -33,19 +33,18 @@
                v-bind:key="todo.index"
 	></todo-item>
 
-	<div v-for="(value, name, index) in todos">
-		{{index}} = {{name}} : {{value}}
-	</div>
+	<span>{{html}}</span>
+	<span v-html="html"></span>
 
-	<!--div class="active">active</div>
-	<div class="error">error</div-->
+	<button v-bind:disabled="isButtonDisabled">Button</button>
 
-	<!--div v-bind:class="{active: active, error: error}">active</div-->
-	<div v-bind:class="active?activeClass:errorClass">프로세스</div>
-	<button @click="changeClass">{{btnName}}</button>
+	<button v-on:[eve]="notice">button1</button>
+	<button @[eve]="notice">button2</button>
 
-	<div v-if="active">고칠 코드가 없습니다</div>
-	<div v-else>코드를 고치세요</div>
+	<input v-bind:value="message" />
+	<input :[attribute]="message" />
+
+	<span>{{reverseMessage}}</span>
 </div>
 
 <script>
@@ -65,22 +64,22 @@
 				, {text : "todo third" }
 			  ]
 			, extraText: ""
-			, active: true
-			, activeClass: "active"
-			, errorClass: "error"
-			, btnName: "오류발생"
+			, html: "<span style='color:red;'>hello</span>"
+			, isButtonDisabled: false
+			, eve: "click"
+			, attribute: "value"
+		}
+		, computed: {
+			reverseMessage: function() {
+				return this.message.split("").reverse().join("");
+			}
 		}
 		, methods: {
 			setSeen: function() {
 				this.seen = !this.seen;
 			}
-			, changeClass: function() {
-				this.active = !this.active;
-				if (this.active) {
-					this.btnName = "오류발생";
-				} else {
-					this.btnName = "정상화";
-				}
+			, notice: function() {
+				alert("You did to "+this.eve);
 			}
 		}
 		, created: function() {
@@ -91,4 +90,7 @@
 	app.$watch('extraText', function(newVal, oldVal) {
 		console.log("newVal="+newVal+", oldVal="+oldVal);
 	})
+
+	app.message = "안녕하세요 좋은 아침입니다. 아침에 식사는 하셨나요?";
+	console.log(app.reverseMessage);
 </script>
