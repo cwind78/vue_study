@@ -7,79 +7,107 @@
 .error {
 	background-color: pink;
 }
+.description {
+	background-color: skyblue;
+	font-weight: bold;
+	font-size: 12px;
+	width: 100%;
+	color: blue;
+}
+.container {
+	width: 30%;
+	float: left;
+	margin-left: 10px;
+}
+
+ul {
+	list-style: none;
+}
 </style>
-<div id="app">
-	{{message}}
-
-	<p v-bind:title="message">
-		over your mouse in here
-	</p>
-
-	<p v-if="seen">can you see me?</p>
-
-	<div>
-		<div v-for="todo in todos">
-			{{todo.text}}
+<ul id="app">
+	<li class="container">
+		<p v-bind:class="{description: 'description'}">보간법</p>
+		{{message}}
+		<p v-bind:class="{description: 'description'}">v-bind:title="message"</p>
+		<p v-bind:title="message">
+			over your mouse in here
+		</p>
+		<p v-bind:class="{description: 'description'}">v-if="seen"</p>
+		<p v-if="seen">can you see me?</p>
+		<p v-bind:class="{description: 'description'}">v-for="todo in todos"</p>
+		<div>
+			<div v-for="todo in todos">
+				{{todo.text}}
+			</div>
 		</div>
-	</div>
+		<p v-bind:class="{description: 'description'}">v-on:click="setSeen"</p>
+		<a v-on:click="setSeen">Seen</a>
 
-	<a v-on:click="setSeen">Seen</a>
+		<p v-bind:class="{description: 'description'}">v-model="extraText"</p>
+		<input v-model="extraText" />
+		<p>{{extraText}}</p>
+		<p v-bind:class="{description: 'description'}">v-for="todo in todos" v-bind:todo="todo" v-bind:key="todo.index"</p>
+		<todo-item v-for="todo in todos"
+	               v-bind:todo="todo"
+	               v-bind:key="todo.index"
+		></todo-item>
 
-	<input v-model="extraText" />
-	<p>{{extraText}}</p>
+		<p v-bind:class="{description: 'description'}">v-html="html"</p>
+		<span>{{html}}</span>
+		<span v-html="html"></span>
+		<p v-bind:class="{description: 'description'}">v-bind:disabled="isButtonDisabled"</p>
+		<button v-bind:disabled="isButtonDisabled">Button</button>
 
-	<todo-item v-for="todo in todos"
-               v-bind:todo="todo"
-               v-bind:key="todo.index"
-	></todo-item>
+		<p v-bind:class="{description: 'description'}">v-on:[eve]="notice" === @[eve]="notice">button2</p>
+		<button v-on:[eve]="notice">button1</button>
+		<button @[eve]="notice">button2</button>
+		<p v-bind:class="{description: 'description'}">v-bind:value="message" === :[attribute]="message"</p>
+		<input v-bind:value="message" />
+		<input :[attribute]="message" />
+		<p v-bind:class="{description: 'description'}">computed</p>
+		<span>{{reverseMessage}}</span>
+	</li>
+	<li class="container">
+		<p v-bind:class="{description: 'description'}">computed v-for</p>
+		<div>even number filter</div>
+		<div>return this.numbers.filter(function(number) { return number % 2 === 0; })</div>
+		<div>{{evenNumbers}}</div>
+		<div v-for="number in evenNumbers">
+			<div>{{number}}</div>
+		</div>
+		<!--div v-for="number in numbers">
+			<div>{{number}}</div>
+		</div-->
+		<p v-bind:class="{description: 'description'}">v-on:keyup.enter page-down 13</p>
+		<input v-on:keyup.enter="submit" />
+		<input v-on:keydown.page-down="onPageDown" />
+		<input v-on:keyup.13="submit" />
+		<!--
+		enter, tab, delete, esc, space, up, down, left, right
+		delete 수식어는 delete키와 backspace키를 모두 인식합니다.
+		-->
+		<!--아래는 안됨(튜토리얼에는 된다고 되어 있는데 왜 안되는지 모름)-->
+		<!--input v-on:keyup.f1="onF1" /-->
+		<p v-bind:class="{description: 'description'}">v-on:keyup.alt.67 === alt+c</p>
+		<!--
+		alt+c
+	    -->
+		<input v-on:keyup.alt.67="submit" />
 
-	<span>{{html}}</span>
-	<span v-html="html"></span>
+		<p v-bind:class="{description: 'description'}">v-on:click.ctrl.exact="onBtnClickWithCtrl"</p>
+		<!--
+		@click.ctrl.exact의 경우 ctrl+click만 허용 한다
+		@click.ctrl의 경우 ctrl+shift+click 등도 허용 한다
+	    -->
+		<button v-on:click.ctrl.exact="onBtnClickWithCtrl">ctrl+@click</button>
 
-	<button v-bind:disabled="isButtonDisabled">Button</button>
+		<p v-bind:class="{description: 'description'}">@click.left="onBtnClickWithMouse" middle right</p>
+		<button @click.left="onBtnClickWithMouse"><-</button>
+		<button @click.middle="onBtnClickWithMouse">|</button>
+		<button @click.right="onBtnClickWithMouse">-></button>
 
-	<button v-on:[eve]="notice">button1</button>
-	<button @[eve]="notice">button2</button>
+		<p v-bind:class="{description: 'description'}">checkbox radio textarea select</p>
 
-	<input v-bind:value="message" />
-	<input :[attribute]="message" />
-
-	<span>{{reverseMessage}}</span>
-
-	<div>even number filter</div>
-	<div>return this.numbers.filter(function(number) { return number % 2 === 0; })</div>
-	<div>{{evenNumbers}}</div>
-	<div v-for="number in evenNumbers">
-		<div>{{number}}</div>
-	</div>
-	<!--div v-for="number in numbers">
-		<div>{{number}}</div>
-	</div-->
-	<input v-on:keyup.enter="submit" />
-	<input v-on:keydown.page-down="onPageDown" />
-	<input v-on:keyup.13="submit" />
-	<!--
-	enter, tab, delete, esc, space, up, down, left, right
-	delete 수식어는 delete키와 backspace키를 모두 인식합니다.
-	-->
-	<!--아래는 안됨(튜토리얼에는 된다고 되어 있는데 왜 안되는지 모름)-->
-	<!--input v-on:keyup.f1="onF1" /-->
-
-	<!--
-	alt+c
-    -->
-	<input v-on:keyup.alt.67="submit" />
-	<!--
-	@click.ctrl.exact의 경우 ctrl+click만 허용 한다
-	@click.ctrl의 경우 ctrl+shift+click 등도 허용 한다
-    -->
-	<button v-on:click.ctrl.exact="onBtnClickWithCtrl">ctrl+@click</button>
-
-	<button @click.left="onBtnClickWithMouse"><-</button>
-	<button @click.middle="onBtnClickWithMouse">|</button>
-	<button @click.right="onBtnClickWithMouse">-></button>
-
-	<div>
 		<input v-model="text_input" placeholder="Please input here" />
 		<div>{{text_input}}</div>
 		<textarea v-model="text_textarea" placeholder="Please input couple of rows"></textarea>
@@ -119,8 +147,29 @@
 			<option v-for="o in options" v-bind:value="o.value">{{o.text}}</option>
 		</select>
 		<div>{{select}}</div>
-	</div>
-</div>
+		<input type="checkbox" v-model="toggle" true-value="Y" false-value="N" />
+		<div>{{toggle}}</div>
+		<input type="radio" v-model="toggleRad" v-bind:value="1" />1-
+		<input type="radio" v-model="toggleRad" v-bind:value="2" />2-
+		<input type="radio" v-model="toggleRad" v-bind:value="3" />3-
+		<div>{{toggleRad}}</div>
+	</li>
+	<li class="container">
+		<p v-bind:class="{description: 'description'}">v-model.lazy="msg"</p>
+		<!--
+			v-model에 lazy 수식어를 붙이면 input 이벤트가 아니라 change 이벤트에 동기화 된다.
+		-->
+		<input v-model.lazy="msg" />
+		<div>{{msg}}</div>
+
+		<p v-bind:class="{description: 'description'}">v-model.number="num"</p>
+		<input v-model.number="num" />
+
+		<p v-bind:class="{description: 'description'}">v-model.trim="extraText"</p>
+		<input v-model.trim="extraText" />
+		{{extraText}}
+	</li>
+</ul>
 
 <script>
 	Vue.component("todo-item", {
@@ -159,6 +208,10 @@
 				, {text: "Three", value: 3}
 			  ]
 			, select: "2"
+			, toggle: ""
+			, toggleRad: ""
+			, msg: ""
+			, num: 0
 		}
 		, computed: {
 			reverseMessage: function() {

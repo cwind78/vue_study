@@ -1,0 +1,90 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+.description {
+	background-color: skyblue;
+	font-weight: bold;
+	font-size: 12px;
+	width: 100%;
+	color: blue;
+}
+
+.extra_description {
+	background-color: #FFE4E1;
+	margin-top: 5px;
+}
+</style>
+
+<div id="app">
+	<div v-bind:class="{description: 'description'}">{{html}}</div>
+	<div class="extra_description">
+		* 아래 경우 제외<br />
+		&gt;script type="text/x-template"&lt;<br />
+		JavaScript 인라인 템플릿 문자열<br />
+		.vue 컴포넌트
+	</div>
+
+	<div class="extra_description">
+<pre>
+컴포넌트에서 data는 아래 문법을 준수
+data: function() {
+	return { .... }
+}
+</pre>
+	</div>
+	<my-component></my-component>
+	<local-component></local-component>
+	
+	<table border="1">
+		<tr is="tr-component"></tr>
+	</table>
+
+	<counter></counter>
+	<counter></counter>
+	<counter></counter>
+</div>
+
+<script>
+
+Vue.component("my-component", {
+	template: "<div>My global component</div>"
+})
+
+var com = {
+	template: "<div>My local component</div>"
+};
+
+var row = {
+	template: "<tr><td>{{message}}</td></tr>"
+	, data: function() {
+		return {
+			message: "IS를 사용하세요"
+		}
+	}
+}
+
+var counter = {
+	template: "<button @click='clickMe'>{{counter}}</button>"
+	, data: function() {
+		return { counter: 0 }
+	}
+	, methods: {
+		clickMe: function() {
+			this.counter++;
+		}
+	}
+}
+
+new Vue({
+	el: "#app"
+	, components: {
+		"local-component": com
+		, "tr-component": row
+		, "counter": counter
+	}
+	, data: {
+		html: "<table><my-component></my-component></table>에서 table과 같이 자식노드를 특정해야 하는 태그는(tr) 랜더링 될때 오류가 발생한다. is='component-name'과 같이 해결할 수 있다. ul, ol, select등도 동일하다"
+	}
+})
+
+</script>
