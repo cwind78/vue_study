@@ -55,6 +55,71 @@
 	<!--div v-for="number in numbers">
 		<div>{{number}}</div>
 	</div-->
+	<input v-on:keyup.enter="submit" />
+	<input v-on:keydown.page-down="onPageDown" />
+	<input v-on:keyup.13="submit" />
+	<!--
+	enter, tab, delete, esc, space, up, down, left, right
+	delete 수식어는 delete키와 backspace키를 모두 인식합니다.
+	-->
+	<!--아래는 안됨(튜토리얼에는 된다고 되어 있는데 왜 안되는지 모름)-->
+	<!--input v-on:keyup.f1="onF1" /-->
+
+	<!--
+	alt+c
+    -->
+	<input v-on:keyup.alt.67="submit" />
+	<!--
+	@click.ctrl.exact의 경우 ctrl+click만 허용 한다
+	@click.ctrl의 경우 ctrl+shift+click 등도 허용 한다
+    -->
+	<button v-on:click.ctrl.exact="onBtnClickWithCtrl">ctrl+@click</button>
+
+	<button @click.left="onBtnClickWithMouse"><-</button>
+	<button @click.middle="onBtnClickWithMouse">|</button>
+	<button @click.right="onBtnClickWithMouse">-></button>
+
+	<div>
+		<input v-model="text_input" placeholder="Please input here" />
+		<div>{{text_input}}</div>
+		<textarea v-model="text_textarea" placeholder="Please input couple of rows"></textarea>
+		<div style="white-space: pre-line;">{{text_textarea}}</div>
+		<input type="checkbox" v-model="checked" />
+		<div>{{checked}}</div>
+		<input type="checkbox" id="one" value="first" v-model="checkedes" />
+		<label for="one">first</label>
+		<input type="checkbox" id="two" value="second" v-model="checkedes" checked="checked" />
+		<label for="two">second</label>
+		<input type="checkbox" id="three" value="third" v-model="checkedes" />
+		<label for="three">third</label>
+		<div>{{checkedes}}</div>
+
+		<input type="radio" value="one" id="r1" v-model="picked" />
+		<label for="r1">one</label>
+		<input type="radio" value="two" id="r2" v-model="picked" checked="checked" />
+		<label for="r2">two</label>
+		<input type="radio" value="three" id="r3" v-model="picked" />
+		<label for="r3">three</label>
+		<div>{{picked}}</div>
+		<select @change="getText" v-model="selected">
+			<option value="a">A</option>
+			<option value="b">B</option>
+			<option value="c">C</option>
+		</select>
+		<div>{{selected}}</div>
+
+		<select v-model="selectedes" multiple>
+			<option value="a">A</option>
+			<option value="b">B</option>
+			<option value="c">C</option>
+		</select>
+		<div>{{selectedes}}</div>
+
+		<select v-model="select">
+			<option v-for="o in options" v-bind:value="o.value">{{o.text}}</option>
+		</select>
+		<div>{{select}}</div>
+	</div>
 </div>
 
 <script>
@@ -62,6 +127,8 @@
 		props: ["todo"]
 		, template: "<p>{{todo.text}}</p>"
 	})
+
+	//Vue.config.keyCodes.f1 = 112;
 
 	var app = new Vue({
 		el: "#App"
@@ -79,6 +146,19 @@
 			, eve: "click"
 			, attribute: "value"
 			, numbers: [1, 2, 3, 4, 5]
+			, text_input: ""
+			, text_textarea: ""
+			, checked: true
+			, checkedes: ["first", "third"]
+			, picked: "three"
+			, selected: "c"
+			, selectedes: []
+			, options: [
+				{text: "One", value: 1}
+				, {text: "Two", value: 2}
+				, {text: "Three", value: 3}
+			  ]
+			, select: "2"
 		}
 		, computed: {
 			reverseMessage: function() {
@@ -96,6 +176,24 @@
 			}
 			, notice: function() {
 				alert("You did to "+this.eve);
+			}
+			, submit: function(e) {
+				alert(e.target.value);
+			}
+			, onPageDown: function() {
+				alert("page-down");
+			}
+			, onF1: function() {
+				alert("F1");
+			}
+			, onBtnClickWithCtrl: function() {
+				alert("@click.ctrl");
+			}
+			, onBtnClickWithMouse: function(e) {
+				alert(e.target.text);
+			}
+			, getText: function(e) {
+				alert(e.target.options[e.target.selectedIndex].text);
 			}
 		}
 		, created: function() {
