@@ -45,6 +45,16 @@
 	<input :[attribute]="message" />
 
 	<span>{{reverseMessage}}</span>
+
+	<div>even number filter</div>
+	<div>return this.numbers.filter(function(number) { return number % 2 === 0; })</div>
+	<div>{{evenNumbers}}</div>
+	<div v-for="number in evenNumbers">
+		<div>{{number}}</div>
+	</div>
+	<!--div v-for="number in numbers">
+		<div>{{number}}</div>
+	</div-->
 </div>
 
 <script>
@@ -65,13 +75,19 @@
 			  ]
 			, extraText: ""
 			, html: "<span style='color:red;'>hello</span>"
-			, isButtonDisabled: false
+			, isButtonDisabled: true
 			, eve: "click"
 			, attribute: "value"
+			, numbers: [1, 2, 3, 4, 5]
 		}
 		, computed: {
 			reverseMessage: function() {
 				return this.message.split("").reverse().join("");
+			}
+			, evenNumbers: function() {
+				return this.numbers.filter(function(number) {
+					return number % 2 === 0;
+				})
 			}
 		}
 		, methods: {
