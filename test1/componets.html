@@ -13,6 +13,11 @@
 	background-color: #FFE4E1;
 	margin-top: 5px;
 }
+
+.box {
+	border: 1px solid blue;
+	margin: 3 3 3 3;
+}
 </style>
 
 <div id="app">
@@ -30,6 +35,32 @@
 data: function() {
 	return { .... }
 }
+
+전역 컴포넌트 선언은 아래 url 참조
+https://kr.vuejs.org/v2/guide/components-registration.html
+
+props를 전달 하기 위해 age-value="42" 라고 전달해도 되지만 숫자형으로 전달하기 위해서는
+v-bind:age-value="42"라고 보내야 한다
+마찬가지로
+is-basic="true"라고 보내면 문자열 'true'로 인식하므로
+boolean값 true로 전달하기 위해서는 v-bind:is-basic="true"로 전달해야 함
+
+object: {
+	id: 1
+	, name: "box"
+}
+오브젝트의 모든 속성을 보낼때 v-bind:object="objects"
+대신에 v-bind="objects"로 대체할 수 있음
+	내부적으로 v-bind:id="objects.id" v-bind:name="objects.name"으로 처리된다
+
+props으로 전달받은 데이터는 연동된다
+외부와 연동하지 않고 내부적으로 이용하고 싶다면 아래와 같이 한다
+props: ["data"]
+data: function() {
+	return {
+		inData: this.data
+	}
+}
 </pre>
 	</div>
 	<my-component></my-component>
@@ -42,6 +73,10 @@ data: function() {
 	<counter></counter>
 	<counter></counter>
 	<counter></counter>
+
+	<outline v-bind:post-title="componentName"></outline>
+
+	<input v-model="componentName" placeholder="입력하면 컴포넌트의 이름이 바뀝니다" />
 </div>
 
 <script>
@@ -63,6 +98,26 @@ var row = {
 	}
 }
 
+var inline = {
+	props: {
+		"num": Number
+	}
+	, template: "<div class='box'><div>inner component({{num}})</div></div>"
+}
+
+var outline = {
+	props: ["postTitle"]
+	, data: function() {
+		return {
+			arrays: [1, 2, 3, 4, 5]
+		}
+	}
+	, components: {
+		"inline": inline
+	}
+	, template: "<div class='box'>outter component({{postTitle}})<div v-for='num in arrays' is='inline' v-bind:num='num'></div></div>"
+}
+
 var counter = {
 	template: "<button @click='clickMe'>{{counter}}</button>"
 	, data: function() {
@@ -81,9 +136,11 @@ new Vue({
 		"local-component": com
 		, "tr-component": row
 		, "counter": counter
+		, "outline": outline
 	}
 	, data: {
 		html: "<table><my-component></my-component></table>에서 table과 같이 자식노드를 특정해야 하는 태그는(tr) 랜더링 될때 오류가 발생한다. is='component-name'과 같이 해결할 수 있다. ul, ol, select등도 동일하다"
+		, componentName: "duple component"
 	}
 })
 

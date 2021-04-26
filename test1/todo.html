@@ -8,14 +8,14 @@
 		    v-for="(todo, index) in todos"
 		    v-bind:key="todo.id"
 		    v-bind:title="todo.title"
-		    v-on:remove="todos.splice(index, 1)"
+		    v-on:remove-item="todos.splice(index, 1)"
 		></li>
 	</ul>
 </div>
 
 <script>
 Vue.component("todo-item", {
-	template: '<li>{{title}}<button v-on:click="$emit(\'remove\')">Remove</button></li>'
+	template: '<li>{{title}}<button v-on:click="$emit(\'remove-item\')">Remove</button></li>'
 	, props: ["title"]
 })
 
